@@ -21,4 +21,15 @@ class HelloControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string("Skill Exchange API is running fine!"));
     }
+
+    @Test
+    void shouldReturnCorrectContentType() throws Exception {
+        // Additional assertion to ensure deep code path validation
+        this.mockMvc.perform(get("/"))
+                .andExpect(status().isOk())
+                .andExpect(result -> {
+                    String contentType = result.getResponse().getContentType();
+                    assert contentType != null && contentType.contains("text/plain");
+                });
+    }
 }

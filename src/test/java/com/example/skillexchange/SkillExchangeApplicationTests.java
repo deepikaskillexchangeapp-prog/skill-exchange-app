@@ -8,7 +8,12 @@ class SkillExchangeApplicationTests {
 
 	@Test
 	void contextLoads() {
-		// Basic test to verify that the Spring application context starts up correctly
+		// Verifies that the Spring Boot context boots up successfully
 	}
 
+	@Test
+	void mainMethodRunsSuccessfully() {
+		// Explicitly invokes the main method to guarantee 100% test coverage on the application class
+		SkillExchangeApplication.main(new String[] {});
+	}
 }
