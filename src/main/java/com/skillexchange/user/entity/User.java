@@ -29,13 +29,13 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	
-	@Column(nullable = false, length = 10, unique = true)
+	@Column(length = 10, unique = true)
 	private String userName;
 	
-	@Column(nullable = false, length = 50)
+	@Column(length = 50)
 	private String firstName;
 	
-	@Column(nullable = false, length = 20)
+	@Column(length = 20)
 	private String lastName;
 	
 	@Column
@@ -44,17 +44,15 @@ public class User {
 	private Integer age;
 	
 	@ElementCollection
-	@Size(min = 1, message = "Please provide atleast one skill")
 	@Size(max = 10, message = "Do not provide more than 10 skills")
 	private List<String> willingToTeach;
 	
 	@ElementCollection
-	@Size(min = 1, message = "Please provide atleast one skill")
 	@Size(max = 10, message = "Do not provide more than 10 skills")
 	private List<String> willingToLearn;
 	
 	@Email
-	@Column(unique = true, length = 50)
+	@Column(length = 50)
 	private String email;
 	
 	@Column(length = 255)

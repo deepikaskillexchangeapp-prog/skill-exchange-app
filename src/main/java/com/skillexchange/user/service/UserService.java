@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.skillexchange.auth.dto.UpdatePasswordDto;
+import com.skillexchange.auth.dto.UpdateUserDTO;
 import com.skillexchange.auth.dto.UserDTO;
 import com.skillexchange.exceptions.InvalidPasswordException;
 import com.skillexchange.exceptions.UserNotFoundException;
@@ -71,6 +73,66 @@ public class UserService {
 		}
 	}
 	
+	@Transactional
+	public void updatePassword(String userName, UpdatePasswordDto updatePasswordDto) {
+		Optional<User> user = userRepository.findByUserName(userName);	
+		if(!user.isPresent()) {
+			throw new UserNotFoundException("User not found with username: " + userName);
+		}
+		String originalPassword = user.get().getPassword();
+		String oldPassword = updatePasswordDto.getOldPassword();
+		String newPassword = updatePasswordDto.getNewPassword();
+		if(!oldPassword.equals(originalPassword)) {
+			throw new InvalidPasswordException("Cannot update due to incorrect password");
+		}
+		user.get().setPassword(newPassword);
+		userRepository.save(user.get());
+	}
 	
+	@Transactional
+	public void updateUser(String userName, UpdateUserDTO updateUserDto) {
+		Optional<User> user = userRepository.findByUserName(userName);	
+		if(!user.isPresent()) {
+			throw new UserNotFoundException("User not found with username: " + userName);
+		}
+		String password = updateUserDto.getPassword();
+		if(password == null) {
+			throw new UserNotFoundException("Please enter the password");
+		}
+		String originalPassword = user.get().getPassword();
+		if(!password.equals(originalPassword)) {
+			throw new InvalidPasswordException("Cannot update user due to incorrect password");
+		}
+		
+		if(updateUserDto.getAge() != null) {
+			user.get().setAge(updateUserDto.getAge());
+		}
+		
+		if(updateUserDto.getEmail() != null) {
+			user.get().setEmail(updateUserDto.getEmail());
+		}
+		
+		if(updateUserDto.getFirstName() != null) {
+			user.get().setFirstName(updateUserDto.getFirstName());
+		}
+		
+		if(updateUserDto.getLastName() != null) {
+			user.get().setLastName(updateUserDto.getLastName());
+		}
+		
+		if(updateUserDto.getUsername() != null) {
+			user.get().setUsername(updateUserDto.getUsername());
+		}
+		
+		if(updateUserDto.getWillingToLearn() != null) {
+			user.get().setWillingToLearn(updateUserDto.getWillingToLearn());
+		}
+		
+		if(updateUserDto.getWillingToTeach() != null) {
+			user.get().setWillingToTeach(updateUserDto.getWillingToTeach());
+		}
+		
+		userRepository.save(user.get());
+	}
 	
 }

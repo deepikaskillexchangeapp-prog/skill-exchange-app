@@ -5,16 +5,20 @@ import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.skillexchange.auth.dto.UpdatePasswordDto;
+import com.skillexchange.auth.dto.UpdateUserDTO;
 import com.skillexchange.auth.dto.UserDTO;
 import com.skillexchange.user.entity.User;
 import com.skillexchange.user.service.UserService;
 
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
 @RestController
@@ -50,5 +54,17 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.OK).body(user);
 	}
 	
+	@Transactional
+	@PatchMapping("/{userName}/password")
+	public ResponseEntity<String> updatePassword(@PathVariable String userName, @RequestBody UpdatePasswordDto updatePasswordDto){
+		userService.updatePassword(userName, updatePasswordDto);
+		return ResponseEntity.status(HttpStatus.OK).body("Password updated successfully");
+	}
 	
+	@Transactional
+	@PatchMapping("/{userName}")
+	public ResponseEntity<String> updateUser(@PathVariable String userName, @RequestBody UpdateUserDTO updateUserDto){
+		userService.updateUser(userName, updateUserDto);
+		return ResponseEntity.status(HttpStatus.OK).body("User details updated successfully");
+	}
 }

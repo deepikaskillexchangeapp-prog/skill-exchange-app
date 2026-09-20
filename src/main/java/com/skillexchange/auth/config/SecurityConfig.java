@@ -23,6 +23,8 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/users").permitAll()
                 .requestMatchers(HttpMethod.GET, "/users/{userName}").permitAll()
                 .requestMatchers(HttpMethod.POST, "/users/delete").permitAll()
+                .requestMatchers(HttpMethod.PATCH, "/users/{userName}").permitAll()
+                .requestMatchers(HttpMethod.PATCH, "/users/{userName}/password").permitAll()
                 .anyRequest().authenticated()
             );
 
