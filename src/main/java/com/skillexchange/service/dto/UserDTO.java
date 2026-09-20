@@ -1,4 +1,4 @@
-package com.skillexchange.auth.dto;
+package com.skillexchange.service.dto;
 
 import java.util.List;
 

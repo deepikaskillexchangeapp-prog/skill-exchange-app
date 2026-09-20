@@ -1,4 +1,4 @@
-package com.skillexchange.user.controller;
+package com.skillexchange.controller;
 
 import java.util.List;
 
@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skillexchange.auth.dto.UpdatePasswordDto;
-import com.skillexchange.auth.dto.UpdateUserDTO;
-import com.skillexchange.auth.dto.UserDTO;
-import com.skillexchange.user.entity.User;
-import com.skillexchange.user.service.UserService;
+import com.skillexchange.entity.User;
+import com.skillexchange.service.UserService;
+import com.skillexchange.service.dto.UpdatePasswordDto;
+import com.skillexchange.service.dto.UpdateUserDTO;
+import com.skillexchange.service.dto.UserDTO;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;

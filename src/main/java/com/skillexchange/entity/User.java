@@ -1,4 +1,4 @@
-package com.skillexchange.user.entity;
+package com.skillexchange.entity;
 
 import java.time.LocalDateTime;
 import java.util.List;

@@ -1,4 +1,4 @@
-	package com.skillexchange.user.repository;
+	package com.skillexchange.repository;
 
 import org.springframework.data.domain.Pageable;
 import java.time.LocalDateTime;
@@ -10,8 +10,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.skillexchange.user.entity.Role;
-import com.skillexchange.user.entity.User;
+import com.skillexchange.entity.Role;
+import com.skillexchange.entity.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {

@@ -1,17 +1,17 @@
-package com.skillexchange.user.service;
+package com.skillexchange.service;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.skillexchange.auth.dto.UpdatePasswordDto;
-import com.skillexchange.auth.dto.UpdateUserDTO;
-import com.skillexchange.auth.dto.UserDTO;
+import com.skillexchange.entity.User;
 import com.skillexchange.exceptions.InvalidPasswordException;
 import com.skillexchange.exceptions.UserNotFoundException;
-import com.skillexchange.user.entity.User;
-import com.skillexchange.user.repository.UserRepository;
+import com.skillexchange.repository.UserRepository;
+import com.skillexchange.service.dto.UpdatePasswordDto;
+import com.skillexchange.service.dto.UpdateUserDTO;
+import com.skillexchange.service.dto.UserDTO;
 
 import jakarta.transaction.Transactional;
 

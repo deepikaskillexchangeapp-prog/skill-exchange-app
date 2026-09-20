@@ -1,4 +1,4 @@
-package com.skillexchange.auth.config;
+package com.skillexchange.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.skillexchange.user.entity;
+package com.skillexchange.entity;
 
 public enum Role {
 	ROLE_USER("Standard User"),
