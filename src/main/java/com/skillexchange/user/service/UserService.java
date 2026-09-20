@@ -1,5 +1,6 @@
 package com.skillexchange.user.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -54,5 +55,22 @@ public class UserService {
 			throw new UserNotFoundException("User not found with username: " + userName);
 		}
 	}
+	
+	public List<User> getAllUsers(){
+		return userRepository.findAll();
+	}
+	
+	public User getUserByUserName(String userName) {
+		Optional<User> user = userRepository.findByUserName(userName);
+		
+		if(user.isPresent()) {
+			return user.get();
+		}
+		else {
+			throw new UserNotFoundException("User not found with username: " + userName);
+		}
+	}
+	
+	
 	
 }

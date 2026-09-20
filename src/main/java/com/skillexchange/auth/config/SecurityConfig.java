@@ -20,6 +20,8 @@ public class SecurityConfig {
                 session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(HttpMethod.POST, "/users/create").permitAll()
+                .requestMatchers(HttpMethod.GET, "/users").permitAll()
+                .requestMatchers(HttpMethod.GET, "/users/{userName}").permitAll()
                 .requestMatchers(HttpMethod.POST, "/users/delete").permitAll()
                 .anyRequest().authenticated()
             );
